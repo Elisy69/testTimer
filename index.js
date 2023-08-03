@@ -2,6 +2,8 @@ const inputEl = document.querySelector("input");
 const buttonEl = document.querySelector("button");
 const timerEl = document.querySelector("span");
 
+const secondsInDay = 86400;
+
 const setTimerTime = (value) => {
   let timeLeft = new Date("January 1, 2000 00:00:00");
   timeLeft.setSeconds(timeLeft.getSeconds() + value);
@@ -15,7 +17,7 @@ const updateTime = (timeLeft) => {
 
 const createTimerAnimator = () => {
   return (seconds) => {
-    if (seconds > 86400) return;
+    if (seconds > secondsInDay) return;
     const timeLeft = setTimerTime(seconds);
     const timer = setInterval(() => updateTime(timeLeft), 1000);
 
